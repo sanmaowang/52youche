@@ -106,8 +106,12 @@ routeControllers.controller('HomeCtrl', ['$scope', 'Data', '$location','$route',
     }
 }]);
 
-routeControllers.run(function ($rootScope, $location) {
+routeControllers.run(function ($rootScope, $location, $window) {
     var history = [];
+    $rootScope.$on('$routeChangeStart',function(evt, absNewUrl, absOldUrl){
+      $window.scrollTo(0,0);
+    });
+
     $rootScope.$on('$routeChangeSuccess', function() {
         history.push($location.$$path);
     });
@@ -117,5 +121,3 @@ routeControllers.run(function ($rootScope, $location) {
         $location.path(prevUrl);
     };
 });
-
-

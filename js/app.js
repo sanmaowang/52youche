@@ -37,3 +37,5 @@ app.config(['$routeProvider','$locationProvider',
     $locationProvider.html5Mode(true);
   }]);
 
+app.value('$anchorScroll', angular.noop);
+
