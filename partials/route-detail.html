@@ -1,0 +1,87 @@
+<header class="bar bar-nav">
+  <button class="btn pull-left" ng-click="back();">
+    后退
+  </button>
+  <h1 class="title">路线详情</h1>
+</header>
+<div id="route_detail" class="content">
+	<div class="profile clearfix">
+		<div class="user-info pull-left">
+      <img ng-src="http://img.52youche.com/{{route.user_icon}}" alt="{{route.driver.nick}}" ng-if="route.user_icon != ''" width="60" height="60" class="img-circle" err-src="http://img.52youche.com/static/img_profile_defult.png" />
+      <img ng-src="http://img.52youche.com/static/img_profile_defult.png" alt="{{route.driver.nick}}" width="60" height="60" class="img-circle" ng-if="route.user_icon == ''"/>
+      <div class="username">
+        {{route.user_name}}
+        <span ng-if="route.car.brand!=''">{{route.car.brand}}{{route.car.car_type}}</span>
+      </div>
+    </div>
+		<div class="chat"></div>
+	</div>
+	<div class="route-note" ng-if="route.desc != ''">
+		<div class="note-arrow"></div>
+		<div class="inner">
+			{{route.desc}}
+		</div>
+	</div>
+	<div class="route-content inner">
+		<div class="route-time">{{route.long_flag == 0?route.start_time:'长期有效'}}</div>
+		<div id="route_map" class="route-map">
+			<img ng-src="{{thumb}}" alt="{{route.start_name}}" height="115" width="100%" err-src="dist/img/default_car.png" />
+		</div>
+		<div class="start-poi">【{{route.start_area_name}}】{{route.start_name}}</div>
+		<div class="end-poi">【{{route.end_area_name}}】{{route.end_name}}</div>
+		<div class="price"></div>
+	</div>
+	<div class="route-car inner" ng-if="route.route_type == 'find_passenger'">
+		<div class="car-content">
+			<div class="car-info clearfix">
+				<img ng-src="http://img.52youche.com/{{route.car.car_type_img}}" alt="{{route.car.car_type}}" width="75" err-src="dist/img/default_car.png" />
+				<h3>{{route.car.brand}} {{route.car.car_type}}</h3>
+				<span class="car-license">{{route.car.plate_number}}</span>
+			</div>
+		</div>
+		<div class="car-feature">
+			<table class="feature-tb">
+        <tr>
+          <td ng-if="route.car.provide_service.smoke.length > 0" width="50%">
+            <i class="feature-smoke-selected"></i>允许在车内吸烟
+          </td>
+          <td ng-if="!route.car.provide_service.smoke" width="50%">
+            <i class="feature-smoke"></i>禁止在车内吸烟
+          </td>
+           <td ng-if="route.car.provide_service.food" width="50%">
+            <i class="feature-eat-selected"></i>允许在车内饮食
+          </td>
+          <td ng-if="!route.car.provide_service.food" width="50%">
+            <i class="feature-eat"></i>允许在车内饮食
+          </td>
+        </tr>
+        <tr>
+        	<td ng-if="route.car.provide_service.pet" width="50%">
+            <i class="feature-pet-selected"></i>允许携带宠物
+          </td>
+          <td ng-if="!route.car.provide_service.pet" width="50%">
+            <i class="feature-pet"></i>禁止携带宠物
+          </td>
+          <td ng-if="route.car.provide_service.air_conditioner" width="50%">
+            <i class="feature-ac-selected"></i>提供空调
+          </td>
+          <td ng-if="!route.car.provide_service.air_conditioner" width="50%">
+            <i class="feature-ac"></i>不提供空调
+          </td>
+        </tr>
+      </table>
+		</div>
+	</div>
+	<div class="inner route-passenger" ng-if="route.route_type == 'find_passenger' && route.passengers.length > 0">
+		<ul class="clearfix">
+			<li ng-repeat="passenger in route.passengers">
+				<img ng-src="http://img.52youche.com/{{passenger.profile_img}}" alt="{{passenger.nick}}" ng-if="passenger.profile_img != ''" width="60" height="60" class="img-circle" err-src="http://img.52youche.com/static/img_profile_defult.png" />
+	      <img ng-src="http://img.52youche.com/static/img_profile_defult.png" alt="{{passenger.nick}}" width="60" height="60" class="img-circle" ng-if="passenger.profile_img == ''"/>
+	      <div class="username">{{passenger.nick}}</div>
+			</li>
+		</ul>
+		<div class="rest-seat">
+			还剩下{{route.seat}}座位
+		</div>
+	</div>
+</div>

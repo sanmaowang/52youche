@@ -1,0 +1,20 @@
+{
+  "name": "52youche",
+  "version": "0.0.1",
+  "authors": [
+    "sanmaowang <wang@sanmao.me>"
+  ],
+  "description": "for 52youche",
+  "keywords": [
+    "ucar"
+  ],
+  "license": "MIT",
+  "homepage": "http://sanmao.me",
+  "private": true,
+  "dependencies": {
+    "angular-route": "~1.2.20",
+    "angular": "~1.2.20",
+    "zepto": "~1.1.4",
+    'ratchet':"~2.0.2"
+  }
+}

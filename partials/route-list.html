@@ -1,0 +1,38 @@
+<header class="bar bar-nav">
+  <h1 class="title">附近</h1>
+</header>
+<div id="tab_bar" class="tabbar">
+  <ul class="clearfix">
+    <li ng-class="{active: listtype == 'find_passenger'}"><a href="#" ng-click="changeList('find_passenger')">附近的车主</a></li>
+    <li ng-class="{active: listtype == 'find_driver'}"><a href="#" ng-click="changeList('find_driver')">附近的乘客</a></li>
+  </ul>
+</div>
+<div id="route_list" class="content">
+  <ul class="route-list">
+    <li ng-repeat="route in routes | filter:listtype">
+      <a class="route-list-item" ng-href="#/{{route.route_id}}">
+        <div class="route-item-header clearfix">
+          <div class="user-info pull-left">
+            <img ng-src="http://img.52youche.com/{{route.user_icon}}" alt="{{route.driver.nick}}" ng-if="route.user_icon != ''" width="60" height="60" class="img-circle" err-src="http://img.52youche.com/static/img_profile_defult.png" />
+            <img ng-src="http://img.52youche.com/static/img_profile_defult.png" alt="{{route.driver.nick}}" width="60" height="60" class="img-circle" ng-if="route.user_icon == ''"/>
+            <div class="username">
+              {{route.user_name}}
+              <span ng-if ="route.route_type == 'find_passenger'">{{route.car.brand}}{{route.car.car_type}}</span>
+              <span ng-if ="route.route_type == 'find_driver'">1000m</span>
+            </div>
+          </div>
+          <div class="price-info pull-right" ng-if="route.route_type == 'find_passenger'">
+            <span ng-if= "route.price == 0" class="price">免费</span>
+            <span ng-if= "route.price != 0" class="price">{{route.price/100}}<em>元/位</em></span>
+            <span class="avaliable">余座: {{route.seat}}位</span>
+          </div>
+        </div>
+        <div class="route-item-main">
+          <div class="route-time">{{route.long_flag == 0?route.start_time:'长期有效'}}</div>
+          <div class="start-poi">【{{route.start_area_name}}】{{route.start_name}}</div>
+          <div class="end-poi">【{{route.end_area_name}}】{{route.end_name}}</div>
+        </div>
+      </a >
+    </li>
+  </ul>
+</div>
