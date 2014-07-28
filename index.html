@@ -13,7 +13,6 @@
   <base href="/52youche/"/>
   <link rel="apple-touch-icon" href="dist/img/logo.png">
   <link rel="stylesheet" href="dist/css/style.css">
-	<link rel="stylesheet" href="dist/css/font-awesome.min.css">
   <link rel="stylesheet" href="bower_components/angular-pull-to-refresh/dist/angular-pull-to-refresh.min.css">
   <link rel="icon" type="image/x-icon" href="favicon.ico" />
   <script src="bower_components/angular/angular.js"></script>
@@ -27,8 +26,7 @@
   <div class="container">
     <div ng-view></div>
     <div class="bar bar-footer clearfix">
-      <button class="btn btn-driver-offer"><i class="fa fa-car"></i> 我是车主</button>
-      <button class="btn btn-passenger-offer"><i class="fa fa-user"></i> 我是乘客</button>
+      <button class="btn btn-driver-offer" ng-click="alert('知道啦！')"><i class="fa fa-thumb-up"></i> 我要拼车!</button>
     </div>
   </div>
 </body>

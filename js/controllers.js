@@ -69,14 +69,6 @@ routeControllers.controller('RouteListCtrl',['$scope','Data', '$routeParams',
     $scope.orderProp = 'id';
     $scope.offset = 0;
     $scope.listtype = (typeof($routeParams.type)!="undefiend")?$routeParams.type:"find_passenger";
-    $scope.onReload = function() {
-      console.warn('reload');
-      var deferred = $q.defer();
-      setTimeout(function() {
-        deferred.resolve(true);
-      }, 1000);
-      return deferred.promise;
-    };
   }]);
 
 routeControllers.controller('RouteDetailCtrl', ['$scope', 'Data', '$routeParams','$http',
