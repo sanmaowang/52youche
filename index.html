@@ -10,12 +10,15 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
 	<title>友车</title>
-  <link rel="apple-touch-icon" href="dist/img/logo.png">
-	<link rel="stylesheet" href="dist/css/style.css">
-  <link rel="icon" type="image/x-icon" href="favicon.ico" />
   <base href="/52youche/"/>
+  <link rel="apple-touch-icon" href="dist/img/logo.png">
+  <link rel="stylesheet" href="dist/css/style.css">
+	<link rel="stylesheet" href="dist/css/font-awesome.min.css">
+  <link rel="stylesheet" href="bower_components/angular-pull-to-refresh/dist/angular-pull-to-refresh.min.css">
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/angular-route/angular-route.js"></script>
+  <script src="bower_components/angular-pull-to-refresh/dist/angular-pull-to-refresh.min.js"></script>
   <script src="bower_components/zepto/zepto.min.js"></script>
   <script src="js/app.js"></script>
   <script src="js/controllers.js"></script>
@@ -23,6 +26,10 @@
 <body>
   <div class="container">
     <div ng-view></div>
+    <div class="bar bar-footer clearfix">
+      <button class="btn btn-driver-offer"><i class="fa fa-car"></i> 我是车主</button>
+      <button class="btn btn-passenger-offer"><i class="fa fa-user"></i> 我是乘客</button>
+    </div>
   </div>
 </body>
 </html>

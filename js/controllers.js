@@ -57,8 +57,8 @@ routeControllers.factory('Data',function ($http) {
     };
 });
 
-routeControllers.controller('RouteListCtrl',['$scope','Data',
-  function($scope, Data){
+routeControllers.controller('RouteListCtrl',['$scope','Data', '$routeParams',
+  function($scope, Data, $routeParams){
     if(!Data.routeList){
       Data.getRouteList(function(results){
         $scope.routes = Data.routeList;
@@ -68,18 +68,14 @@ routeControllers.controller('RouteListCtrl',['$scope','Data',
     }
     $scope.orderProp = 'id';
     $scope.offset = 0;
-    $scope.listtype = 'find_passenger';
-    $scope.changeList = function(type){
-      $scope.listtype = type;
-    };
-    $scope.search = function(){
-      if(!poi.start_lng){
-        alert("亲，只要输入起点就可以搜索！");
-        return false;
-      }
-      Data.searchRoute(poi,function(){
-        $scope.routes = Data.searchResult;
-      });
+    $scope.listtype = (typeof($routeParams.type)!="undefiend")?$routeParams.type:"find_passenger";
+    $scope.onReload = function() {
+      console.warn('reload');
+      var deferred = $q.defer();
+      setTimeout(function() {
+        deferred.resolve(true);
+      }, 1000);
+      return deferred.promise;
     };
   }]);
 
@@ -111,13 +107,4 @@ routeControllers.run(function ($rootScope, $location, $window) {
     $rootScope.$on('$routeChangeStart',function(evt, absNewUrl, absOldUrl){
       $window.scrollTo(0,0);
     });
-
-    $rootScope.$on('$routeChangeSuccess', function() {
-        history.push($location.$$path);
-    });
-    
-    $rootScope.back = function () {
-        var prevUrl = history.length > 1 ? history.splice(-2)[0] : "/";
-        $location.path(prevUrl);
-    };
 });

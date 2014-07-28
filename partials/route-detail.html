@@ -1,11 +1,11 @@
 <header class="bar bar-nav">
-  <a class="icon icon-left-nav pull-left" ng-click="back()" href="#"></a>
+	<a href back-button class="icon icon-left-nav pull-left" ></a>
   <h1 class="title">路线详情</h1>
 </header>
 <div id="route_detail" class="content">
 	<div class="profile clearfix">
 		<div class="user-info pull-left">
-      <img ng-src="http://img.52youche.com/{{route.user_icon}}" alt="{{route.driver.nick}}" ng-if="route.user_icon != ''" width="60" height="60" class="img-circle" err-src="http://img.52youche.com/static/img_profile_defult.png" />
+      <img ng-src="http://img.52youche.com/{{route.user_icon}}" alt="{{route.driver.nick}}" ng-if="route.user_icon != ''" width="60" height="60" class="img-circle" err-src="dist/img/img_profile_defult.png" />
       <img ng-src="http://img.52youche.com/static/img_profile_defult.png" alt="{{route.driver.nick}}" width="60" height="60" class="img-circle" ng-if="route.user_icon == ''"/>
       <div class="username">
         {{route.user_name}}

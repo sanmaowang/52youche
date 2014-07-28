@@ -17,25 +17,48 @@ Date.prototype.Format = function (fmt) { //author: meizz
 var app = angular.module('routeApp', [
   'ngRoute',
   'routeControllers',
+  'mgcrea.pullToRefresh'
 ]);
 
 
 app.config(['$routeProvider','$locationProvider',
   function($routeProvider,$locationProvider) {
     $routeProvider.
-      when('/', {
+      when('/list/:column/:type', {
         templateUrl: 'partials/route-list.html',
         controller: 'RouteListCtrl'
       }).
-      when('/:routeId', {
+      when('/route/:routeId', {
         templateUrl: 'partials/route-detail.html',
         controller: 'RouteDetailCtrl'
       }).
       otherwise({
-        redirectTo: '/',
+        redirectTo: '/list/nearby/find_passenger',
       });
-    $locationProvider.html5Mode(true);
   }]);
 
-app.value('$anchorScroll', angular.noop);
+app.directive('backButton', ['$window', function($window) {
+    return {
+        restrict: 'A',
+        link: function (scope, elem, attrs) {
+            elem.bind('click', function () {
+                $window.history.back();
+                scope.$apply()
+            });
+        }
+    };
+}]);
+
+app.directive('errSrc', function() {
+  return {
+    link: function(scope, element, attrs) {
+      element.bind('error', function() {
+        if (attrs.src != attrs.errSrc) {
+          attrs.$set('src', attrs.errSrc);
+        }
+      });
+    }
+  }
+});
+
 

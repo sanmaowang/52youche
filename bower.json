@@ -15,6 +15,7 @@
     "angular-route": "~1.2.20",
     "angular": "~1.2.20",
     "zepto": "~1.1.4",
-    'ratchet':"~2.0.2"
+    "ratchet": "~2.0.2",
+    "angular-pull-to-refresh": "~0.3.0"
   }
 }

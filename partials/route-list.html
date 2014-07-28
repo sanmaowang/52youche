@@ -3,14 +3,14 @@
 </header>
 <div id="tab_bar" class="tabbar">
   <ul class="clearfix">
-    <li ng-class="{active: listtype == 'find_passenger'}"><a href="#" ng-click="changeList('find_passenger')">附近的车主</a></li>
-    <li ng-class="{active: listtype == 'find_driver'}"><a href="#" ng-click="changeList('find_driver')">附近的乘客</a></li>
+    <li ng-class="{active: listtype == 'find_passenger'}"><a ng-href="#/list/nearby/find_passenger">附近的车主</a></li>
+    <li ng-class="{active: listtype == 'find_driver'}"><a ng-href="#/list/nearby/find_driver">附近的乘客</a></li>
   </ul>
 </div>
 <div id="route_list" class="content">
-  <ul class="route-list">
+  <ul class="route-list" pull-to-refresh="onReload()">
     <li ng-repeat="route in routes | filter:listtype">
-      <a class="route-list-item" ng-href="#/{{route.route_id}}">
+      <a class="route-list-item" ng-href="#/route/{{route.route_id}}">
         <div class="route-item-header clearfix">
           <div class="user-info pull-left">
             <img ng-src="http://img.52youche.com/{{route.user_icon}}" alt="{{route.driver.nick}}" ng-if="route.user_icon != ''" width="60" height="60" class="img-circle" err-src="http://img.52youche.com/static/img_profile_defult.png" />
